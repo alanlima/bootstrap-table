@@ -343,7 +343,7 @@
         searchTimeOut: 500,
         searchText: '',
         iconSize: undefined,
-        buttonsClass: 'default',
+        buttonsClass: 'secondary',
         iconsPrefix: 'glyphicon', // glyphicon of fa (font awesome)
         icons: {
             paginationSwitchDown: 'glyphicon-collapse-down icon-chevron-down',

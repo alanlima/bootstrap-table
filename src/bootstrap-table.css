@@ -205,6 +205,10 @@
     line-height: 34px;
 }
 
+.fixed-table-pagination {
+    padding: 0 12px;
+}
+
 .fixed-table-pagination li.disabled a {
     pointer-events: none;
     cursor: default;
