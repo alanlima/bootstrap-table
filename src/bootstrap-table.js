@@ -1310,8 +1310,8 @@
             $allSelected = false,
             i, from, to,
             $pageList,
-            $first, $pre,
-            $next, $last,
+            $pre,
+            $next,
             $number,
             data = this.getData(),
             pageList = this.options.pageList;
@@ -1406,7 +1406,7 @@
             html.push('</div>',
                 '<div class="pull-' + this.options.paginationHAlign + ' pagination">',
                 '<ul class="pagination' + sprintf(' pagination-%s', this.options.iconSize) + '">',
-                '<li class="page-pre"><a href="#">' + this.options.paginationPreText + '</a></li>');
+                '<li class="page-item page-pre"><a class="page-link" href="#">' + this.options.paginationPreText + '</a></li>');
 
             if (this.totalPages < 5) {
                 from = 1;
@@ -1426,8 +1426,8 @@
 
             if (this.totalPages >= 6) {
                 if (this.options.pageNumber >= 3) {
-                    html.push('<li class="page-first' + (1 === this.options.pageNumber ? ' active' : '') + '">',
-                        '<a href="#">', 1, '</a>',
+                    html.push('<li class="page-item page-first' + (1 === this.options.pageNumber ? ' active' : '') + '">',
+                        '<a class="page-link" href="#">', 1, '</a>',
                         '</li>');
 
                     from++;
@@ -1437,8 +1437,8 @@
                     if (this.options.pageNumber == 4 || this.totalPages == 6 || this.totalPages == 7) {
                         from--;
                     } else {
-                        html.push('<li class="page-first-separator disabled">',
-                            '<a href="#">...</a>',
+                        html.push('<li class="page-item page-first-separator disabled">',
+                            '<a class="page-link" href="#">...</a>',
                             '</li>');
                     }
 
@@ -1463,29 +1463,29 @@
             }
 
             for (i = from; i <= to; i++) {
-                html.push('<li class="page-number' + (i === this.options.pageNumber ? ' active' : '') + '">',
-                    '<a href="#">', i, '</a>',
+                html.push('<li class="page-item' + (i === this.options.pageNumber ? ' active' : '') + '">',
+                    '<a class="page-link" href="#">', i, '</a>',
                     '</li>');
             }
 
             if (this.totalPages >= 8) {
                 if (this.options.pageNumber <= (this.totalPages - 4)) {
-                    html.push('<li class="page-last-separator disabled">',
-                        '<a href="#">...</a>',
+                    html.push('<li class="page-item page-last-separator disabled">',
+                        '<a class="page-link" href="#">...</a>',
                         '</li>');
                 }
             }
 
             if (this.totalPages >= 6) {
                 if (this.options.pageNumber <= (this.totalPages - 3)) {
-                    html.push('<li class="page-last' + (this.totalPages === this.options.pageNumber ? ' active' : '') + '">',
-                        '<a href="#">', this.totalPages, '</a>',
+                    html.push('<li class="page-item page-last' + (this.totalPages === this.options.pageNumber ? ' active' : '') + '">',
+                        '<a class="page-link" href="#">', this.totalPages, '</a>',
                         '</li>');
                 }
             }
 
             html.push(
-                '<li class="page-next"><a href="#">' + this.options.paginationNextText + '</a></li>',
+                '<li class="page-item page-next"><a class="page-link" href="#">' + this.options.paginationNextText + '</a></li>',
                 '</ul>',
                 '</div>');
         }
@@ -1493,11 +1493,9 @@
 
         if (!this.options.onlyInfoPagination) {
             $pageList = this.$pagination.find('.page-list a');
-            $first = this.$pagination.find('.page-first');
             $pre = this.$pagination.find('.page-pre');
             $next = this.$pagination.find('.page-next');
-            $last = this.$pagination.find('.page-last');
-            $number = this.$pagination.find('.page-number');
+            $number = this.$pagination.find('.page-item').not('.page-next, .page-pre');
 
             if (this.options.smartDisplay) {
                 if (this.totalPages <= 1) {
@@ -1523,11 +1521,10 @@
             if ($allSelected) {
                 this.options.pageSize = this.options.formatAllRows();
             }
+            // removed the events for last and first, onPageNumber executeds the same logic
             $pageList.off('click').on('click', $.proxy(this.onPageListChange, this));
-            $first.off('click').on('click', $.proxy(this.onPageFirst, this));
             $pre.off('click').on('click', $.proxy(this.onPagePre, this));
             $next.off('click').on('click', $.proxy(this.onPageNext, this));
-            $last.off('click').on('click', $.proxy(this.onPageLast, this));
             $number.off('click').on('click', $.proxy(this.onPageNumber, this));
         }
     };
