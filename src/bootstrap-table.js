@@ -1373,7 +1373,7 @@
                     '</span>',
                     ' <span class="caret"></span>',
                     '</button>',
-                    '<ul class="dropdown-menu" role="menu">'
+                    '<div class="dropdown-menu">'
                 ];
 
             if (typeof this.options.pageList === 'string') {
@@ -1391,14 +1391,14 @@
                 if (!that.options.smartDisplay || i === 0 || pageList[i - 1] < that.options.totalRows) {
                     var active;
                     if ($allSelected) {
-                        active = page === that.options.formatAllRows() ? ' class="active"' : '';
+                        active = page === that.options.formatAllRows() ? ' active' : '';
                     } else {
-                        active = page === that.options.pageSize ? ' class="active"' : '';
+                        active = page === that.options.pageSize ? ' active' : '';
                     }
-                    pageNumber.push(sprintf('<li class="dropdown-item"%s><a href="#">%s</a></li>', active, page));
+                    pageNumber.push(sprintf('<a class="dropdown-item %s" href="#">%s</a>', active, page));
                 }
             });
-            pageNumber.push('</ul></span>');
+            pageNumber.push('</div></span>');
 
             html.push(this.options.formatRecordsPerPage(pageNumber.join('')));
             html.push('</span>');
