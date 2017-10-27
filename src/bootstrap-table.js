@@ -1119,7 +1119,7 @@
                 var checked = column.visible ? ' checked="checked"' : '';
 
                 if (column.switchable) {
-                    html.push(sprintf('<li role="menuitem">' +
+                    html.push(sprintf('<li class="dropdown-item">' +
                         '<label><input type="checkbox" data-field="%s" value="%s"%s> %s</label>' +
                         '</li>', column.field, i, checked, column.title));
                     switchableCount++;
@@ -1395,7 +1395,7 @@
                     } else {
                         active = page === that.options.pageSize ? ' class="active"' : '';
                     }
-                    pageNumber.push(sprintf('<li role="menuitem"%s><a href="#">%s</a></li>', active, page));
+                    pageNumber.push(sprintf('<li class="dropdown-item"%s><a href="#">%s</a></li>', active, page));
                 }
             });
             pageNumber.push('</ul></span>');
