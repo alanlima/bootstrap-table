@@ -1105,7 +1105,7 @@
                 sprintf('<i class="%s %s"></i>', this.options.iconsPrefix, this.options.icons.columns),
                 ' <span class="caret"></span>',
                 '</button>',
-                '<ul class="dropdown-menu" role="menu">');
+                '<div class="dropdown-menu dropdown-menu-right">');
 
             $.each(this.columns, function (i, column) {
                 if (column.radio || column.checkbox) {
@@ -1119,13 +1119,13 @@
                 var checked = column.visible ? ' checked="checked"' : '';
 
                 if (column.switchable) {
-                    html.push(sprintf('<li class="dropdown-item">' +
-                        '<label><input type="checkbox" data-field="%s" value="%s"%s> %s</label>' +
-                        '</li>', column.field, i, checked, column.title));
+                    html.push(sprintf('<label class="dropdown-item">' +
+                    '<input type="checkbox"  data-field="%s" value="%s"%s> %s' +
+                    '</label>', column.field, i, checked, column.title));
                     switchableCount++;
                 }
             });
-            html.push('</ul>',
+            html.push('</div>',
                 '</div>');
         }
 
@@ -1391,9 +1391,9 @@
                 if (!that.options.smartDisplay || i === 0 || pageList[i - 1] < that.options.totalRows) {
                     var active;
                     if ($allSelected) {
-                        active = page === that.options.formatAllRows() ? ' active' : '';
+                        active = page === that.options.formatAllRows() ? 'active' : '';
                     } else {
-                        active = page === that.options.pageSize ? ' active' : '';
+                        active = page === that.options.pageSize ? 'active' : '';
                     }
                     pageNumber.push(sprintf('<a class="dropdown-item %s" href="#">%s</a>', active, page));
                 }
