@@ -1052,13 +1052,13 @@
         this.$toolbar.html('');
 
         if (typeof this.options.toolbar === 'string' || typeof this.options.toolbar === 'object') {
-            $(sprintf('<div class="bs-bars pull-%s"></div>', this.options.toolbarAlign))
+            $(sprintf('<div class="bs-bars float-%s"></div>', this.options.toolbarAlign))
                 .appendTo(this.$toolbar)
                 .append($(this.options.toolbar));
         }
 
         // showColumns, showToggle, showRefresh
-        html = [sprintf('<div class="columns columns-%s btn-group pull-%s">',
+        html = [sprintf('<div class="columns columns-%s btn-group float-%s">',
             this.options.buttonsAlign, this.options.buttonsAlign)];
 
         if (typeof this.options.icons === 'string') {
@@ -1174,7 +1174,7 @@
         if (this.options.search) {
             html = [];
             html.push(
-                '<div class="pull-' + this.options.searchAlign + ' search">',
+                '<div class="float-' + this.options.searchAlign + ' search">',
                 sprintf('<input class="form-control' +
                     sprintf(' input-%s', this.options.iconSize) +
                     '" type="text" placeholder="%s">',
@@ -1351,7 +1351,7 @@
         }
 
         html.push(
-            '<div class="pull-' + this.options.paginationDetailHAlign + ' pagination-detail">',
+            '<div class="float-' + this.options.paginationDetailHAlign + ' pagination-detail">',
             '<span class="pagination-info">',
             this.options.onlyInfoPagination ? this.options.formatDetailPagination(this.options.totalRows) :
             this.options.formatShowingRows(this.pageFrom, this.pageTo, this.options.totalRows),
@@ -1404,7 +1404,7 @@
             html.push('</span>');
 
             html.push('</div>',
-                '<div class="pull-' + this.options.paginationHAlign + ' pagination">',
+                '<div class="float-' + this.options.paginationHAlign + ' pagination">',
                 '<ul class="pagination' + sprintf(' pagination-%s', this.options.iconSize) + '">',
                 '<li class="page-item page-pre"><a class="page-link" href="#">' + this.options.paginationPreText + '</a></li>');
 
